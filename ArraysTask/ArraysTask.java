@@ -58,6 +58,40 @@ public class ArraysTask {
         return -1; 
     }
 
+    //Question 4: Reverse the Array
+    static int[] reverseArray(int[] arr){
+        int[] reversed = new int[arr.length];
+
+        for (int i = 0; i < arr.length; i++){
+            reversed[i] = arr[arr.length - 1 - i];
+        }
+        return reversed;
+    }
+    static void printArray(int[] arr){
+        for (int i = 0; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    //Question 5: Student Grades
+    static int[] readGrades(int size){
+        int[] grades = new int[size];
+        for (int i = 0; i < grades.length; i++){
+            System.out.print("Enter grade " + (i + 1) + ": ");
+            grades[i] = scanner.nextInt();
+        }
+        return grades;
+    }
+    static int countPassed(int[] grades){
+        int passed = 0;
+        for (int i = 0; i < grades.length; i++){
+            if (grades[i] >= 50) {
+                passed++;
+            }
+        }
+        return passed;
+    }
+
      public static void main(String[] args) {
         int[] numbers = {12, 7, 25, 3, 18, 9, 30, 14};
 
@@ -78,5 +112,16 @@ public class ArraysTask {
             System.out.println(input + " found at index " + indexOf(numbers, input));
         }
 
+        System.out.print("Original: ");
+        printArray(numbers);
+        System.out.print("\n" + "Reversed: ");
+        printArray(reverseArray(numbers));
+
+        System.out.print("\n" + "How many students? ");
+        int size = scanner.nextInt();
+        int[] grade = readGrades(size);
+        int pass = countPassed(grade);
+        System.out.println("Passed: " + pass);
+        System.out.println("Failed: " + (grade.length - pass));
     }
 }
